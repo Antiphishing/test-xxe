@@ -1,0 +1,70 @@
+{
+  "name": "@helm2/poc_jenki_rce",
+  "author": "marudor",
+  "contributors": [
+    "Jeff Smick",
+    "Marco Rogers"
+  ],
+  "packageManager": "pnpm@6.32.9",
+  "binary": {
+    "module_name": "xmljs",
+    "module_path": "./build/Release/",
+    "host": "https://github.com",
+    "remote_path": "./marudor/libxmljs2/releases/download/v{version}/",
+    "package_name": "{node_abi}-{platform}-{arch}-{libc}.tar.gz"
+  },
+  "description": "libxml bindings for v8 javascript engine",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "node-pre-gyp install --build-from-source",
+    "install": "node-pre-gyp install --fallback-to-build --loglevel http",
+    "test": "node --expose_gc ./node_modules/jest/bin/jest.js",
+    "lint": "eslint index.js test",
+    "tsd": "tsd",
+    "package": "node-pre-gyp package 2>&1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/marudor/libxmljs2.git"
+  },
+  "bugs": {
+    "url": "http://github.com/marudor/libxmljs2/issues"
+  },
+  "main": "./index",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "src",
+    "lib",
+    "vendor",
+    "binding.gyp",
+    "Makefile"
+  ],
+  "dependencies": {
+    "@mapbox/node-pre-gyp": "^1.0.9",
+    "bindings": "~1.5.0",
+    "child_process": "^1.0.2",
+    "nan": "~2.15.0",
+    "net": "^1.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-config-marudor": "^9.0.0",
+    "jest": "^27.5.1",
+    "jest-watch-typeahead": "^1.0.0",
+    "prettier": "^2.6.2",
+    "tsd": "^0.20.0",
+    "typescript": "^4.6.3"
+  },
+  "types": "./index.d.ts",
+  "homepage": "https://github.com/marudor/libxmljs2#readme",
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  }
+}
